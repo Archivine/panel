@@ -5,12 +5,13 @@ def getCurrentDate():
     now = datetime.now()
     return now.strftime("%d/%m/%Y %H:%M:%S")
 
-def createUserTemplate(username, password):
+def createUserTemplate(username, password, inviter):
 
     user = {
         "uid": getNextSequenceValue(),
         "username": f"{username}",
         "password": f"{password}", # <--- has to be already hashed and decoded
+        "invited_by": f"{inviter}",
         "created_at": f"{getCurrentDate()}",
         "admin": False,
         "banned": False

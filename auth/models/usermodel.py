@@ -1,5 +1,7 @@
+import bcrypt
+
 from auth.core.database import getInvitesCollection, getUsersCollection
-from auth.utils.utility import createInviteTemplate
+from auth.utils.utility import createInviteTemplate, createUserTemplate
 
 def usernameCheck(username):
    
@@ -12,47 +14,55 @@ def invCheck(invite):
     for x in getInvitesCollection().find({"invite": f"{invite}"}):
         return True
     return False
+
+
 def getInviter(invite):
     for x in getInvitesCollection().find({"invite": f"{invite}"}):
         inviter = x["inviter"]
         return inviter
     
-  
 
-
-def login(username, password, hwid):
+def login(username, password):
     if usernameCheck(username):
-        x = valueQuery(f"select * from users WHERE username = %s", [username])
-        row = x[0]
-        hashed_pass = bytes(row[2])
-        passw = password.encode("utf8")
-        print(hashed_pass)
-        if row[3] == "null" or row[3] == "None" or row[3] is None:
-            db.valueQueryNoReturn(
-                f"UPDATE `users` SET `hwid` = ? WHERE `username` = %s",
-                [hwid, username],
-            )
-        if bcrypt.checkpw(passw, hashed_pass):
-            ret = {
-                "status": "success",
-                "message": f"Successfully logged in as {decodeBytearray(row[1])}",
-                "uid": row[0],
-                "username": decodeBytearray(row[1]),
-                "hwid": decodeBytearray(row[3]),
-                "isadmin": row[4],
-                "isBanned": row[5],
-                "joinedAt": str(row[7]),
-            }
+        for x in getUsersCollection().find({"username": f"{username}"}):
+            hashedPassword = x["password"].encode("utf8")
+            encodedPassword = password.encode("utf8")
 
-            return ret
+            __username__ = x["username"]
+            __uid__ = x["uid"]
+            __isAdmin__ = x["admin"]
+            __isBanned__ = x["banned"]
+            __inviter__ = x["invited_by"]
+            __createdAt__ = x["created_at"]
+            if bcrypt.checkpw(encodedPassword, hashedPassword):
+                ret = {
+                    "status": "success",
+                    "message": f"Successfully logged in as {__username__}",
+                    "uid": __uid__,
+                    "username": f"{__username__}",
+                    "isAdmin": __isAdmin__,
+                    "isBanned":  __isBanned__,
+                    "invited_by": f"{__inviter__}",
+                    "created_at": f"{__createdAt__}",
+                }
 
-        else:
+                return ret
 
-            ret = {"status": "failed", "message": "Invalid password"}
-            return ret
+            else:
+
+                ret = {
+                    "status": "failed", 
+                    "message": "Invalid password"
+                }
+
+                return ret
     else:
 
-        ret = {"status": "failed", "message": "Invalid username"}
+        ret = {
+            "status": "failed", 
+            "message": "Invalid username"
+        
+        }
         return ret
 
 
@@ -62,11 +72,10 @@ def register(username, password, invite):
         inviter = getInviter(invite)
 
         if inviter:
-
-            valueQueryNoReturn(
-                "INSERT INTO `users` (`username`, `password`, `invitedBy`) VALUES (%s, %s, %s)",
-                [username, password, inviter],
-            )
+            encodedPassword = password.encode("utf8")
+            hashedPassword = bcrypt.hashpw(encodedPassword, bcrypt.gensalt())
+            getUsersCollection().insert_one(createUserTemplate(username, hashedPassword.decode(), inviter))
+            getInvitesCollection().delete_one({"invite": f"{invite}"})
 
             ret = {
                 "status": "success",
