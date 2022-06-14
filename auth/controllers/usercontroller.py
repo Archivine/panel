@@ -1,41 +1,115 @@
-
-
+import bcrypt
+from auth.models.usermodel import login, register, updatePassword
 
 def checkPassword(password):
+    
     if not password:
-        return "blank password"
+        return "Blank password"
+
     elif len(password) < 6:
-        return "password too short"
+        return "Password too short"
+
     elif len(password) > 20:
-        return "password too long"
+        return "Password too long"
+
+    elif not password.isalnum():
+        return "Password must contain only alphanumericals"
+
     else:
         return True
+
 
 def checkUsername(username):
+
     if not username:
-        return "blank username"
+        return "Blank username"
+
     elif len(username) < 4:
-        return "username too short"
+        return "Username too short"
+
     elif len(username) > 20:
-        return "username too long"
+        return "Username too long"
+
     elif not username.isalnum():
-        return "username must contain only alphanumericals"
+        return "Username must contain only alphanumericals"
+
     else:
         return True
 
+
 def checkCredentials(username, password):
+
     x = checkUsername(username)
     y = checkPassword(password)
-    if x and y:
+
+    if x is True and y is True:
+
         return True
+
     else:
-        return str(x) + " | " + str(y)
+
+        if x is not True:
+            return x 
+
+        elif y is not True:
+            return y
+   
         
-def loginController(username, password, hwid):
-    y = checkCredentials(username, password)
-    if y:
-        x = login(username, password.decode(), hwid)
+def loginController(username, password):
+
+    y = checkPassword(password)
+
+    if y is True:
+
+        x = login(username, password)
         return x
+
     else:
-        ret = {"status": "failed", "message": str(y)}
+
+        ret = {"status": "failed", "message": "Invalid password"}
+
+        return ret
+
+
+def registerController(username, password, invite):
+
+        y = checkCredentials(username, password)
+    
+        if y is True:
+
+            x = register(username, password, invite)
+
+            return x
+                
+        else:
+
+            ret = {"status": "failed", "message": f"{y}"}
+            return ret
+    
+
+def updatePasswordController(username, password, newPassword):
+
+    y = checkCredentials(username, password)
+    h = checkPassword(newPassword)
+   
+    if y is True and h is True:
+       
+        x = updatePassword(username, password, newPassword)
+        return x
+
+    else:
+        
+        message = ""
+
+        if y is not True:
+            message = y
+
+        elif h is not True:
+            message = h
+
+        ret = {
+            "status": "failed",
+            "message": f"{message}"
+        }
+
         return ret

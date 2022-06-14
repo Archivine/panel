@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>{{SITE_TITLE}} - Home</title>
+        <link rel="shortcut icon" href="{{SITE_ICON}}">
+        <meta name="description" content="">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="theme-color" content="{{ SITE_THEME_COLOR }}">
+        <meta property="og:site_name" content="{{ OG_SITE_TITLE }}">
+        <meta property="og:description" content="{{ OG_SITE_DESCRIPTION }}">
+        <meta property="og:image" content="{{ OG_SITE_IMAGE }}">
+        <meta property="og:url" content="{{ OG_SITE_URL }}">
+
+        {% block header %}
+        {% if OG_LARGE_SUMMARY_CARD %}
+        <meta name="twitter:card" content="summary_large_image">
+        {% endif %}
+        {% endblock header %}
+        <link rel="stylesheet" href="static/css/style.css">
+
+    </head>
+
+    <body>
+        <div class="wrapper" id="main">
+
+            <!-- navbar -->
+            <nav>
+                <a class="brand" href="{{ url_for('home') }}">{{SITE_TITLE}}</a>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('user')}}">User</a></li>
+                    <li><a href="{{url_for('logout')}}">Logout</a></li>
+                </ul>
+            </nav>
+
+            <!-- body -->
+            <div class="flex">
+                <div class="small-container mt-align center-text">
+                    <p style="font-size: 20px; margin: 5px 0px;">Welcome to the admin panel, {{ USERNAME }}</p>
+                    <hr>
+                    <div style="text-align: left; margin-top: 5px;">
+                        <p>Total users: {{ TOTAL_USERS }}</p>
+                        <p>Total invites: {{ TOTAL_INVITES }}</p>
+                        <p>Users banned: {{ TOTAL_BANS }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="small-container y-align center-text">
+                    <p style="font-size: 20px; margin: 5px 0px;">Manage</p>
+                    <div class="flexible" style="justify-content: center; align-items: center;">
+                        <a class="admin-button" href="{{url_for('invites')}}">Invites</a> 
+                        <a class="admin-button" href="{{url_for('users')}}">Users</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

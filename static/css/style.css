@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200&display=swap');
+
+:root {
+    --background: #121212;
+    --textColor: #d4d4d4;
+
+    --navbarBackground: #1a1a1a;
+    --navbarHeaderColor: #d4d4d4;
+    --navbarButtonsTextColor: #d4d4d4;
+    --navbarButtonsAltTextColor: #ababab;
+    --navbarButtonsColor: #242424;
+    --navbarButtonsAltColor: #121212;
+
+    --containerBackground: #1b1b1b;
+
+    --authInputBoxColor: #272727;
+    --authInputBoxAltColor: #7a7a7a;
+    --authButtonColor: #272727;
+    --authButtonAltColor: #202020;
+
+    --adminButtonColor: #272727;
+    --adminButtonAltColor: #202020;
+    --adminButtonLineAltColor: #7a7a7a;
+
+    --tableBackground: #202020;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    background: var(--background);
+    font-family: 'Outfit', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+p {
+    color: var(--textColor);
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: normal;
+    color: var(--textColor);
+}
+
+table {
+
+    background: var(--tableBackground);
+    border-radius: 5px;
+    color: var(--textColor);
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    padding: 15px;
+}
+
+
+
+
+.wrapper nav {
+    background: var(--navbarBackground);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.wrapper nav .brand {
+    font-size: 30px;
+    font-weight: normal;
+    color: white;
+    transition: 1s font-size;
+}
+
+.wrapper nav .brand:hover {
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.wrapper nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.wrapper nav ul li {
+    border-radius: 5px;
+    padding: 10px;
+    background: var(--navbarButtonsColor);
+    margin: 5px;
+    transition: .1s;
+    line-height: 1;
+}
+
+.wrapper nav ul li:hover {
+    cursor: pointer;
+    background: var(--navbarButtonsAltColor);
+    
+    margin: 5px;
+}
+
+.wrapper nav ul li a {
+    font-size: 20px;
+    margin: 0;
+    color: var(--navbarButtonsTextColor);
+    transition: .1s;
+}
+
+
+
+
+
+.container {
+    display: block;
+    background: var(--containerBackground);
+    width: 50%;
+    border-radius: 5px;
+    padding: 25px;
+    margin: 25px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 60%);
+}
+
+.small-container {
+    display: block;
+    background: var(--containerBackground);
+    width: 25%;
+    border-radius: 5px;
+    padding: 25px;
+    margin: 25px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 60%);
+}
+.login {
+
+	padding: 5px;
+}
+.auth_field {
+	padding: 5px 0;	
+	
+}
+
+.auth-input-box {
+    border: none;
+	border-bottom: 2px solid #D1D1D4;
+	border-radius: 5px;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 500;
+	width: 75%;
+	transition: .2s;
+    background: var(--authInputBoxColor);
+	outline: none;
+    margin: 5px;
+	color: var(--textColor);
+}
+
+.auth-input-box:active,
+.auth-input-box:focus,
+.auth-input-box:hover {
+    caret-color: var(--textColor);
+	border-bottom-color: var(--authInputBoxAltColor);
+    
+}
+
+.auth-button {
+    background: var(--authButtonColor);
+    color: var(--textColor);
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 5px;
+    width: 100px;
+    margin: 10px 5px;
+    padding: 8px 25px;
+}
+
+.auth-button:active,
+.auth-button:hover {
+    cursor: pointer;
+    background: var(--authButtonAltColor);
+    border-bottom-color: var(--authInputBoxAltColor);
+}
+
+.admin-button {
+    background: var(--adminButtonColor);
+    color: var(--textColor);
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 5px;
+    width: 55px;
+    margin: 10px 5px;
+    padding: 8px 15px;
+}
+
+.admin-button:active,
+.admin-button:hover {
+    cursor: pointer;
+    background: var(--adminButtonAltColor);
+    border-bottom-color: var(--adminButtonLineAltColor);
+}
+
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+.center-text {
+    text-align: center;
+}
+
+.mt-align {
+    margin-top: 25vh !important;
+
+}
+.i-align {
+    margin-top: 15vh !important;
+}
+.y-align {
+    margin-top: 15px;
+}
+.b-align {
+    margin-bottom: 25vh !important;
+}
+.flexible {
+    display: flex;
+}
+@media only screen and (max-width: 650px) {
+
+    .container {
+        display: block;
+        background: var(--containerBackground);
+        width: 100%;
+        border-radius: 5px;
+        padding: 25px;
+    }
+    
+    .small-container {
+        display: block;
+        background: var(--containerBackground);
+        width: 100%;
+        border-radius: 5px;
+        padding: 25px;
+    }
+
+  }

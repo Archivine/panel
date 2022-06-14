@@ -11,24 +11,23 @@ def getDatabase():
 
     return m_client["mvc_test"]
 
+db = getDatabase()
 
 def getUsersCollection():
 
-    db = getDatabase()
     users = db["users"]
 
     return users
 
 def getIncrementCollection():
 
-    db = getDatabase()
     increment = db["increment"]
 
     return increment
 
 def getInvitesCollection():
 
-    db = getDatabase()
+   
     invites = db["invites"]
 
     return invites

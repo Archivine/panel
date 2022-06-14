@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+    <head>
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+        <title>{{SITE_TITLE}} - Register</title>
+        <link rel="shortcut icon" href="{{SITE_ICON}}">
+        <meta name="description" content="">
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <meta name="theme-color" content="{{ SITE_THEME_COLOR }}">
+        <meta property="og:site_name" content="{{ OG_SITE_TITLE }}">
+        <meta property="og:description" content="{{ OG_SITE_DESCRIPTION }}">
+        <meta property="og:image" content="{{ OG_SITE_IMAGE }}">
+        <meta property="og:url" content="{{ OG_SITE_URL }}">
+    
+        {% block header %}
+        {% if OG_LARGE_SUMMARY_CARD %}
+        <meta name="twitter:card" content="summary_large_image">
+        {% endif %}
+        {% endblock header %}
+        <link rel="stylesheet" href="static/css/style.css">
+    
+    </head>
+    
+    <body>
+        <div class="wrapper" id="main">
+            
+            <!-- navbar -->
+            <nav>
+                <a class="brand" href="{{ url_for('home') }}">{{SITE_TITLE}}</a>
+                <ul>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                </ul>
+            </nav>
+        
+            <!-- body -->
+            <div class="flex">
+                <div class="small-container mt-align center-text">
+                
+                    <h1 style="font-size: 21px; margin: 8px 0;">Register</h1>
+                    <p>{{ REGISTER_LABEL }}</p>
+                    
+                    <form class="auth" action="{{ url_for('register') }}" method="post">
+                    
+                        <div class="auth_field">
+                            <input class="auth-input-box" type="text" name="username" placeholder="Username" id="username"
+                                required>
+                        </div>
+
+                        <div class="auth_field">
+                            <input class="auth-input-box" type="password" name="password" placeholder="Password"
+                                id="password" required>
+                        </div>
+
+                        <div class="auth_field">
+                            <input class="auth-input-box" type="text" name="invite" placeholder="Invite" id="invite"
+                                required>
+                        </div>
+
+                        <input class="auth-button" type="submit" value="Register">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
