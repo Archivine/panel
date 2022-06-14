@@ -7,7 +7,7 @@
       <img alt="Issues" src="https://img.shields.io/github/issues/Archivine/panel?color=0088ff" />
     </a>
     <a href="https://github.com/Archivine/panel/pulls">
-      <img alt="Pull requests" src="https://img.shields.io/github/issues-pr/Archivine/panel?color=0088ff" />
+      <img alt="Pull requests" src="https://img.shields.io/github/issues-pr/Archivine/panel" />
     </a>
   </p>
  
