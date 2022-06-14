@@ -73,10 +73,15 @@ https://www.mongodb.com/basics/clusters/mongodb-cluster-setup
 
 <br>
 
+#### Open <ins>**__[auth/core/config.py]__**</ins>  
+Replace `CLUSTER_URL` with your mongodb cluster link.
+Edit site info / meta embed info to your liking.
+
+<br>
+
 #### Run server.py
 
-**[Optional]** Open <ins>**__[auth/core/config.py]__**</ins>  
-Edit it to your liking.
+
 
 
 <h3> Made for educational purposes only. Do not, under any circumstances, use it in production. It's terribly coded and lacks a lot. </h3>
