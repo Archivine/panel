@@ -49,6 +49,7 @@ https://www.mongodb.com/basics/clusters/mongodb-cluster-setup
 » Create a new database, call it whatever you want.
 
 <br>
+
 #### Clone the repo
 » Go to **__[auth/core/database.py]__**  
 » Replace the last line of getDatabase() with your collection name  
@@ -58,19 +59,23 @@ https://www.mongodb.com/basics/clusters/mongodb-cluster-setup
 ```
 
 <br>
+
 #### Import all of the collections included in the <ins>**[db]**</ins> folder using mongoimport.
 » Admin password is `shashmuga` by default.
 
 <br>
+
 #### Install required python dependencies
 * Flask
 * PyMongo[srv]
 
 <br>
+
 #### Run server.py
 
-!! OPTIONAL Open <ins>**__[auth/core/config.py]__**</ins>  
+**[Optional]** Open <ins>**__[auth/core/config.py]__**</ins>  
 Edit it to your liking.
+
 
 <h3> Made for educational purposes only. Do not, under any circumstances, use it in production. It's terribly coded and lacks a lot. </h3>
 
