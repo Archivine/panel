@@ -3,10 +3,10 @@
  <p align="center">w/ love by vaul</p>
 </p>
   <p align="center">
-    <a href="https://github.com/anuraghazra/github-readme-stats/issues">
+    <a href="https://github.com/Archivine/panel/issues">
       <img alt="Issues" src="https://img.shields.io/github/issues/Archivine/panel?color=0088ff" />
     </a>
-    <a href="https://github.com/anuraghazra/github-readme-stats/pulls">
+    <a href="https://github.com/Archivine/panel/pulls">
       <img alt="Pull requests" src="https://img.shields.io/github/issues-pr/Archivine/panel?color=0088ff" />
     </a>
   </p>
