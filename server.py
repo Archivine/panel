@@ -1,17 +1,12 @@
 from flask import *
 from flask import render_template
 from auth.utils.utility import getCurrentDate, createInviteTemplate, decodeBase64
-from auth.core.database import getInvitesCollection
 from auth.controllers.usercontroller import loginController, registerController, updatePasswordController
 from auth.controllers.admincontroller import generateInviteController, listInvitesController, getTotalUsersController, getBannedUsersController, listBannedUsersController, getTotalInvitesController, listUsersController, manageUserBanStateController
-
-
 from auth.core.config import getSiteInfo, getEmbedInfo
 
-listInvitesController()
 server = Flask(__name__)
-
-server.secret_key = 'yeah'
+server.secret_key = 'secret-key-here'
 
 @server.route("/")
 def home():
@@ -53,16 +48,11 @@ def login():
 
 		if x["status"] == "success":
 
-			if x["isAdmin"] == 0:
-				isAdmin = False
-			else:
-				isAdmin = True
-
 			session['loggedIn'] = True
 			session['uid'] = x['uid']
 			session['username'] = x['username']
 			session['creationDate'] = x['created_at']
-			session['isAdmin'] = isAdmin
+			session['isAdmin'] = x['isAdmin']
 			
 			return redirect(url_for('home'))
 

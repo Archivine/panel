@@ -59,6 +59,7 @@
                                 <th>Created at</th>
                                 <th>Admin</th>
                                 <th>Banned</th>
+                                <th>Invited by</th>
                             </tr>
                         
                         </thead>
@@ -74,6 +75,7 @@
                                     <td> {{ i["created_at"] }}</td>
                                     <td> {{ i["admin"] }}</td>
                                     <td> {{ i["banned"] }}</td>
+                                    <td> {{ i["invited_by"]}}</td>
                                     <td>
 
                                         {% if i["banned"] == True %}
