@@ -18,7 +18,7 @@
 ##### USES
 * HTML5 for frontend
 * Flask for backend
-* MongoDB (PyMongo[srv]) for data storage
+* MongoDB for data storage
 
 ##### AUTH
 * Login
