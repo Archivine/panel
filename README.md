@@ -78,3 +78,6 @@ Edit it to your liking.
 
 
 <h3> Made for educational purposes only. Do not, under any circumstances, use it in production. It's terribly coded and lacks a lot. </h3>
+
+*Heavily inspired by znix's php panel.*   
+*[Check it out](https://github.com/znixbtw/php-panel-v2)*
